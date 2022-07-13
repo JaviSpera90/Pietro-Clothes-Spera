@@ -1,0 +1,22 @@
+{
+  "name": "pietro",
+  "version": "1.0.0",
+  "description": "Proyecto Pietro Clothes",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-sass --include-path sass ./sass/index.scss ./css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaviSpera90/pietro-clothes-spera.git"
+  },
+  "author": "Javier Spera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaviSpera90/pietro-clothes-spera/issues"
+  },
+  "homepage": "https://github.com/JaviSpera90/pietro-clothes-spera#readme",
+  "devDependencies": {
+    "node-sass": "^7.0.1"
+  }
+}

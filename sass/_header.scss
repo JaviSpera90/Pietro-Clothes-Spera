@@ -1,0 +1,46 @@
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: $fuente;
+    padding: 5vh;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    color: $colorceleste;
+    border-style: solid;
+    margin: 1vw;
+    padding: 1vh;
+    font-size: 7vh;
+    font-weight: bold;
+}
+.navegador_ul {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    list-style-type: none;
+    text-decoration: none;
+    padding: 3vh;
+    & li {
+        margin: 0 20px;
+    }
+    & li a {
+        color: $colorceleste;
+        font-weight: bold;
+        font-size: 3vh;
+        margin: 3vh;
+        padding: 3vh;
+        line-height: 2;
+    }
+    & li a:hover {
+        text-decoration: underline;
+    }
+    a {
+        text-decoration: none;
+    }
+}
