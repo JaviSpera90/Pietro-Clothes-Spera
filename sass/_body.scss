@@ -1,0 +1,108 @@
+.card_father {
+    display: flex;
+    justify-content: space-between;
+    .card {
+        font-family: 'Roboto Mono', monospace;
+        background-color: $colorceleste;
+        padding: 1.5625rem;
+        width: 18.75rem;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        line-height: 1.5;
+        margin: 0 auto;
+        text-align: center;
+        .card_buy {
+            text-decoration-line: underline;
+            color: white;
+        }
+        .cardimg {
+            height: 18.75rem;
+            width: 12.5rem;
+        }
+        p {
+            line-height: 1.5;
+            font-weight: bold;
+            color: white;
+        }
+        .card_title {
+            color: white;
+        }
+    }
+}
+
+.clothing__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 10px;
+    max-width: 1200px;
+    .clothing_card {
+        text-align: center;
+        line-height: 1.5;
+        .clothingtext {
+            color: black;
+        }
+        .clothingbuy {
+            color: black;
+            text-decoration-line: underline;
+        }
+    }
+}
+
+.contact_father {
+    background-color: $colorceleste;
+    display: flex;
+    justify-content: space-evenly;
+    font-family: $fuente;
+    border-style: solid;
+    margin: auto;
+    padding: 1rem;
+    .contact_title {
+        font-weight: bold;
+        text-decoration-line: underline;
+    }
+    .button {
+        background-color: black;
+        color: white;
+        padding: 3px;
+        border-color: white;
+        border-style: solid;
+    }
+    .input_group {
+        position: relative;
+        .input {
+            font-family: $fuente;
+            color: black;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid black;
+            outline: none;
+            padding-block: 5px;
+        }
+    }
+}
+
+.input::placeholder {
+    color: inherit;
+    transition: opacity .25s;
+}
+
+.input:focus::placeholder {
+    opacity: 0;
+}
+
+.border_bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s;
+}
+
+.input:focus + .border_bottom,
+.input:valid + .border_bottom {
+    transform: scaleX(1);
+}
