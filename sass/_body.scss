@@ -12,7 +12,7 @@
         text-align: center;
         .card_buy {
             text-decoration-line: underline;
-            color: white;
+            color: $colorblanco;
         }
         .cardimg {
             height: 18.75rem;
@@ -21,10 +21,10 @@
         p {
             line-height: 1.5;
             font-weight: bold;
-            color: white;
+            color: $colorblanco;
         }
         .card_title {
-            color: white;
+            color: $colorblanco;
         }
     }
 }
@@ -39,10 +39,10 @@
         text-align: center;
         line-height: 1.5;
         .clothingtext {
-            color: black;
+            color: $colornegro;
         }
         .clothingbuy {
-            color: black;
+            color: $colornegro;
             text-decoration-line: underline;
         }
     }
@@ -61,20 +61,20 @@
         text-decoration-line: underline;
     }
     .button {
-        background-color: black;
-        color: white;
+        background-color: $colornegro;
+        color: $colorblanco;
         padding: 3px;
-        border-color: white;
+        border-color: $colorblanco;
         border-style: solid;
     }
     .input_group {
         position: relative;
         .input {
             font-family: $fuente;
-            color: black;
+            color: $colornegro;
             background-color: transparent;
             border: none;
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid $colornegro;
             outline: none;
             padding-block: 5px;
         }

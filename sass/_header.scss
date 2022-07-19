@@ -19,13 +19,18 @@
     font-size: 7vh;
     font-weight: bold;
 }
-.navegador_ul {
+
+@mixin navegador_base {
     display: flex;
     justify-content: space-around;
     flex-flow: row wrap;
     list-style-type: none;
     text-decoration: none;
     padding: 3vh;
+}
+
+.navegador_ul {
+    @include navegador_base;
     & li {
         margin: 0 20px;
     }
