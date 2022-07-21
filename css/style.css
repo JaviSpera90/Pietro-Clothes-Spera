@@ -224,7 +224,9 @@
   .contact_father {
     display: grid;
     grid-template-columns: repeat(1fr);
-    background-size: auto; } }
+    background-size: auto; }
+  .icons {
+    display: none; } }
 
 .images__index {
   width: 100%; }
