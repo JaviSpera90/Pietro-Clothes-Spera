@@ -158,7 +158,8 @@
     border-color: white;
     border-style: solid;
     font-size: 140%;
-    font-family: "Spline Sans Mono", monospace; }
+    font-family: "Spline Sans Mono", monospace;
+    margin-top: 4px; }
   .contact_father .input_group {
     position: relative; }
     .contact_father .input_group .input {
