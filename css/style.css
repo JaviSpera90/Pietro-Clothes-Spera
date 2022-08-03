@@ -145,16 +145,20 @@
   font-family: "Spline Sans Mono", monospace;
   border-style: solid;
   margin: auto;
-  padding: 1rem; }
+  padding: 1rem;
+  min-height: 50vh; }
   .contact_father .contact_title {
     font-weight: bold;
-    text-decoration-line: underline; }
+    text-decoration-line: underline;
+    font-size: 200%; }
   .contact_father .button {
     background-color: black;
     color: white;
     padding: 3px;
     border-color: white;
-    border-style: solid; }
+    border-style: solid;
+    font-size: 140%;
+    font-family: "Spline Sans Mono", monospace; }
   .contact_father .input_group {
     position: relative; }
     .contact_father .input_group .input {
@@ -164,7 +168,8 @@
       border: none;
       border-bottom: 2px solid black;
       outline: none;
-      padding-block: 5px; }
+      padding-block: 5px;
+      font-size: 140%; }
 
 .input::placeholder {
   color: inherit;
@@ -189,25 +194,22 @@
   transform: scaleX(1); }
 
 @media (max-width: 768px) {
-  .clothing {
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    width: auto; }
+  .clothing__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 100%; }
   .title {
     text-align: center; }
   .navegador_ul {
     display: flex;
     flex-direction: column;
     align-items: center; }
-  .clothingimg {
-    width: 100%;
-    padding: 20px; }
   .card_father {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     width: 100%; } }
 
-@media (max-width: 320px) {
+@media (max-width: 450px) {
   .title {
     text-align: center; }
   .navegador_ul {
@@ -215,7 +217,8 @@
     flex-direction: column;
     align-items: center; }
   .clothing__grid {
-    grid-template-columns: repeat(1, 1fr);
+    display: grid;
+    grid-template-columns: 1fr;
     max-width: 100%; }
   .card_father {
     display: grid;
