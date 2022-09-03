@@ -79,10 +79,9 @@ const producto6 = new producto ("Campera", 20000)
 let total = 0;
 const Carrito = []
 let comprar = true;
-alert("Opciones disponible:\nJogger\nHoodie\nZapatillas\nGorra\nRemera\nCampera\nFinalizar compra")
 
 while (comprar) {
-    let producto = prompt("¿Qué prenda desea llevar?")
+    let producto = prompt("¿Qué prenda desea llevar?\nJogger\nHoodie\nZapatillas\nGorra\nRemera\nCampera\nFinalizar compra")
     
     if (producto === "Jogger") {
             producto1.agregarCarrito();
