@@ -72,7 +72,7 @@ function producto (nombre, precio) {
 const producto1 = new producto ("Jogger", 6500)
 const producto2 = new producto ("Hoodie", 7500)
 const producto3 = new producto ("Zapatillas", 15000)
-const prodcuto4 = new producto ("Gorra", 4000)
+const producto4 = new producto ("Gorra", 4000)
 const producto5 = new producto ("Remera", 4500)
 const producto6 = new producto ("Campera", 20000)
 
@@ -126,3 +126,17 @@ while (comprar) {
 
 producto();
 
+producto= [];
+producto.push(producto1,producto2,producto3,producto4,producto5,producto6)
+
+let encontrado= producto.find(el=>{
+    return el.name === "Hoodie";
+})
+
+console.log(encontrado);
+
+let precioMayor= producto.filter(el=>{
+    return el.price > 10000;
+})
+
+console.log(precioMayor)
