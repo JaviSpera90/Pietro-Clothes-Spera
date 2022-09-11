@@ -9,9 +9,6 @@
 //     alert("Hola " + nombre + " " + apellido + "!");
 // }
 
-const { removeAllListeners } = require("npmlog");
-const { updateLocale } = require("yargs");
-
 // function mostrarRopa() {
 //     let ropa;
 //     do{
@@ -139,6 +136,7 @@ producto.push(producto1,producto2,producto3,producto4,producto5,producto6)
 // })
 
 // console.log(precioMayor)
+const ul= document.getElementById('lista')
 
 const productos= [
     { id: 1, nombre: "Hoodie", precio: 7500, img: "hoodie.jpg" },
@@ -149,6 +147,8 @@ const productos= [
     { id: 6, nombre: "Jogger", precio: 6500, img: "jogger.jpg" },
 ];
 
+console.log(productos);
+
 for (const producto of productos) {
     let li= document.createElement('li')
     li.innerHTML=`
@@ -157,8 +157,3 @@ for (const producto of productos) {
     <img src="../../Images/${producto.img}" alt="">`
     ul.append(li) 
 }
-
-// const titulo= document.getElementsByClassName('card_header');
-// const texto= document.createElement('p');
-// texto.innerHTML= `<p>Ropa nueva</p>`;
-// document.titulo.append(texto);
