@@ -1,13 +1,16 @@
-function solicitarNombre() {
-    alert("Bienvenido a Pietro Clothes")
-    let nombre = prompt("Ingrese su nombre");
-    while(nombre === "")
-    nombre = prompt("Ingrese su nombre");
-    let apellido = prompt("ingrese su apellido");
-    while(apellido === "")
-    apellido = prompt("ingrese su apellido");
-    alert("Hola " + nombre + " " + apellido + "!");
-}
+// function solicitarNombre() {
+//     alert("Bienvenido a Pietro Clothes")
+//     let nombre = prompt("Ingrese su nombre");
+//     while(nombre === "")
+//     nombre = prompt("Ingrese su nombre");
+//     let apellido = prompt("ingrese su apellido");
+//     while(apellido === "")
+//     apellido = prompt("ingrese su apellido");
+//     alert("Hola " + nombre + " " + apellido + "!");
+// }
+
+const { removeAllListeners } = require("npmlog");
+const { updateLocale } = require("yargs");
 
 // function mostrarRopa() {
 //     let ropa;
@@ -55,10 +58,7 @@ function solicitarNombre() {
 //     }
 // }
 
-solicitarNombre();
-// let ropaNombre = mostrarRopa();
-// let precioRopa = confirmarPrecio(ropaNombre);
-// cobrar(ropaNombre,precioRopa)
+// solicitarNombre();
 
 function producto (nombre, precio) {
     this.name = nombre;
@@ -80,62 +80,85 @@ let total = 0;
 const Carrito = []
 let comprar = true;
 
-while (comprar) {
-    let producto = prompt("¿Qué prenda desea llevar?\nJogger\nHoodie\nZapatillas\nGorra\nRemera\nCampera\nFinalizar compra")
+// while (comprar) {
+//     let producto = prompt("¿Qué prenda desea llevar?\nJogger\nHoodie\nZapatillas\nGorra\nRemera\nCampera\nFinalizar compra")
     
-    if (producto === "Jogger") {
-            producto1.agregarCarrito();
-            console.log(Carrito);
-        }
+//     if (producto === "Jogger") {
+//             producto1.agregarCarrito();
+//             console.log(Carrito);
+//         }
 
-            else if (producto === "Hoodie") {
-                producto2.agregarCarrito();
-                console.log(Carrito);
-                }
+//             else if (producto === "Hoodie") {
+//                 producto2.agregarCarrito();
+//                 console.log(Carrito);
+//                 }
 
-            else if (producto === "Zapatillas") {
-                producto3.agregarCarrito();
-                console.log(Carrito);
-                }
+//             else if (producto === "Zapatillas") {
+//                 producto3.agregarCarrito();
+//                 console.log(Carrito);
+//                 }
 
-            else if (producto === "Gorra") {
-                producto4.agregarCarrito();
-                console.log(Carrito);
-                }
+//             else if (producto === "Gorra") {
+//                 producto4.agregarCarrito();
+//                 console.log(Carrito);
+//                 }
         
-            else if (producto === "Remera") {
-                producto5.agregarCarrito();
-                console.log(Carrito);
-                }
+//             else if (producto === "Remera") {
+//                 producto5.agregarCarrito();
+//                 console.log(Carrito);
+//                 }
 
-            else if (producto === "Campera") {
-                producto6.agregarCarrito();
-                console.log(Carrito);
-                }
+//             else if (producto === "Campera") {
+//                 producto6.agregarCarrito();
+//                 console.log(Carrito);
+//                 }
 
-            else if (producto === "Finalizar compra") {
-                comprar = false;
-                console.log("Las prendas seleccionadas son:\n"+Carrito.join("\n")+".\nEl precio total de tu compra es $"+total);
-            }
+//             else if (producto === "Finalizar compra") {
+//                 comprar = false;
+//                 console.log("Las prendas seleccionadas son:\n"+Carrito.join("\n")+".\nEl precio total de tu compra es $"+total);
+//             }
 
-            else {
-                alert("No seleccionaste ninguna prenda");
-            }
-        }
+//             else {
+//                 alert("No seleccionaste ninguna prenda");
+//             }
+//         }
 
 producto();
 
 producto= [];
 producto.push(producto1,producto2,producto3,producto4,producto5,producto6)
 
-let encontrado= producto.find(el=>{
-    return el.name === "Hoodie";
-})
+// let encontrado= producto.find(el=>{
+//     return el.name === "Hoodie";
+// })
 
-console.log(encontrado);
+// console.log(encontrado);
 
-let precioMayor= producto.filter(el=>{
-    return el.price > 10000;
-})
+// let precioMayor= producto.filter(el=>{
+//     return el.price > 10000;
+// })
 
-console.log(precioMayor)
+// console.log(precioMayor)
+
+const productos= [
+    { id: 1, nombre: "Hoodie", precio: 7500, img: "hoodie.jpg" },
+    { id: 2, nombre: "Zapatillas", precio: 15000, img: "zapatillas.jpg" },
+    { id: 3, nombre: "Remera", precio: 4500, img: "remera.jpg" },
+    { id: 4, nombre: "Campera", precio: 20000, img: "campera.jpg" },
+    { id: 5, nombre: "Gorra", precio: 4000, img: "gorra.jpg" },
+    { id: 6, nombre: "Jogger", precio: 6500, img: "jogger.jpg" },
+];
+
+for (const producto of productos) {
+    let li= document.createElement('li')
+    li.innerHTML=`
+    <h3>${producto.nombre}</h3>
+    <p>${producto.precio}</p>
+    <img src="../../Images/${producto.img}" alt="">`
+    ul.append(li) 
+}
+
+// const titulo= document.getElementsByClassName('card_header');
+// const texto= document.createElement('p');
+// texto.innerHTML= `<p>Ropa nueva</p>`;
+// document.titulo.append(texto);
