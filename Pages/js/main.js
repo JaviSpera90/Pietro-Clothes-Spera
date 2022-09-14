@@ -136,24 +136,93 @@ producto.push(producto1,producto2,producto3,producto4,producto5,producto6)
 // })
 
 // console.log(precioMayor)
-const ul= document.getElementById('lista')
 
 const productos= [
-    { id: 1, nombre: "Hoodie", precio: 7500, img: "hoodie.jpg" },
-    { id: 2, nombre: "Zapatillas", precio: 15000, img: "zapatillas.jpg" },
-    { id: 3, nombre: "Remera", precio: 4500, img: "remera.jpg" },
-    { id: 4, nombre: "Campera", precio: 20000, img: "campera.jpg" },
-    { id: 5, nombre: "Gorra", precio: 4000, img: "gorra.jpg" },
-    { id: 6, nombre: "Jogger", precio: 6500, img: "jogger.jpg" },
+    { id: 1, nombre: "Hoodie", precio: "$7500", img: "hoodie.jpg" },
+    { id: 2, nombre: "Zapatillas", precio: "$15000", img: "zapatillas.jpg" },
+    { id: 3, nombre: "Remera", precio: "$4500", img: "remera.jpg" },
+    { id: 4, nombre: "Campera", precio: "$20000", img: "campera.jpg" },
+    { id: 5, nombre: "Gorra", precio: "$4000", img: "gorra.jpg" },
+    { id: 6, nombre: "Jogger", precio: "$6500", img: "jogger.jpg" },
 ];
 
 console.log(productos);
+document.title = "Pietro Clothes";
 
-for (const producto of productos) {
-    let li= document.createElement('li')
-    li.innerHTML=`
-    <h3>${producto.nombre}</h3>
-    <p>${producto.precio}</p>
-    <img src="../../Images/${producto.img}" alt="">`
-    ul.append(li) 
+const containerDiv = document.querySelector(".container");
+const carritoDiv = document.querySelector(".carrito");
+let carrito = [];
+// const texto = document.createElement('p');
+// const contenedor = document.getElementsByClassName('contenedor');
+
+// let li = document.createElement('li');
+// let ul = document.getElementById('lista');
+// for (const producto of productos) {
+//     let li= document.createElement('li')
+//     li.innerHTML=`<tr>
+//                         <td>${producto.nombre}</td>
+//                         <td>${producto.precio}</td>
+//                         <td><img src="../../Images/${producto.img}" alt=""></td>
+//                         <td><button class="btn">Buy</button></td>
+//                 </tr>`;
+//     ul.append(li) 
+// }
+function crearCards(){
+    productos.forEach(element=>{
+        containerDiv.innerHTML += `<div style="padding: 20px; background-color:white; border: 2px solid black;">
+        <h4>${element.nombre}</h4>
+        <p>${element.precio}</p>
+        <img src="../../Images/${element.img}" alt="">
+        <button class="btnCarrito" id="btn-agregar${element.id}">Agregar</button>
+        </div>`
+    })
+    agregarFuncionAlBoton();
 }
+
+function agregarFuncionAlBoton(){
+    productos.forEach(producto=>{
+        document.querySelector(`#btn-agregar${producto.id}`).addEventListener("click",()=>{
+            agregarAlCarrito(producto)
+        })
+    })
+}
+
+function agregarAlCarrito(producto){
+    let existe = carrito.some(prod=>prod.id === producto.id);
+    if(existe===false){
+        producto.cantidad = 1;
+        carrito.push(producto);
+    }
+    else{
+        let prodFind = carrito.find(prod=> prod.id===producto.id);
+        prodFind.cantidad++;
+    }
+    console.log(carrito);
+renderizarCarrito();
+}
+
+function renderizarCarrito(){
+    carritoDiv.innerHTML = "";
+    carrito.forEach(prod=>{
+        carritoDiv.innerHTML += `<div style="padding: 20px; background-color:white; border: 2px solid black;">
+        <h4>${prod.nombre}</h4>
+        <h3>CANTIDAD: ${prod.cantidad}</h3>
+        <p>${prod.precio}</p>
+        <button class="btnCarrito" id="btn-borrar${prod.id}">Borrar</button>
+        </div>`
+    })
+    borrarProducto()
+}
+
+function borrarProducto(){
+    carrito.forEach(producto=>{
+        document.querySelector(`#btn-borrar${producto.id}`).addEventListener("click",()=>{
+            let indice = carrito.findIndex(element=>element.id===producto.id);
+            carrito.splice(indice,1);
+            renderizarCarrito()
+        })
+    })
+}
+
+renderizarCarrito();
+crearCards();
