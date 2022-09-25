@@ -6,6 +6,11 @@ function producto (nombre, precio) {
         total = this.price + total;
     }
 }
+// const producto = {
+//     nombre: "Jogger",
+//     precio: 6500
+// }
+// const { nombre, precio } = producto
 
 const producto1 = new producto ("Jogger", 6500)
 const producto2 = new producto ("Hoodie", 7500)
@@ -43,11 +48,12 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || []
 crearCards();
 function crearCards(){
     productos.forEach(element=>{
+        let {nombre, precio, img, id} = element
         containerDiv.innerHTML += `<div style="padding: 20px; background-color:white; border: 2px solid black;">
-        <h4>${element.nombre}</h4>
-        <p>$${element.precio}</p>
-        <img src="../../Images/${element.img}" alt="">
-        <button class="btnCarrito" id="btn-agregar${element.id}">Agregar</button>
+        <h4>${nombre}</h4>
+        <p>$${precio}</p>
+        <img src="../../Images/${img}" alt="">
+        <button class="btnCarrito" id="btn-agregar${id}">Agregar</button>
         </div>`
     })
     agregarFuncionAlBoton();
@@ -88,6 +94,7 @@ function crearCarritoCard(){
             <button class="btnCarrito" id="btn-borrar${prod.id}">Borrar</button>
             </div>`
     })
+    totalCarritoDiv.innerHTML = '';
     let totalCarrito = carrito.reduce((acc, el) => acc + el.precio * el.cantidad,0)
     totalCarritoDiv.innerHTML += `
     <p>El total de su compra es $${totalCarrito}</p>
