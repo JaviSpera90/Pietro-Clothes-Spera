@@ -6,11 +6,6 @@ function producto (nombre, precio) {
         total = this.price + total;
     }
 }
-// const producto = {
-//     nombre: "Jogger",
-//     precio: 6500
-// }
-// const { nombre, precio } = producto
 
 const producto1 = new producto ("Jogger", 6500)
 const producto2 = new producto ("Hoodie", 7500)
@@ -119,3 +114,13 @@ function borrarProducto(){
 }
 
 crearCarritoCard();
+
+  const { value: accept } = Swal.fire({
+    title: 'WELCOME TO PIETRO CLOTHES',
+    input: 'checkbox',
+    inputValue: 1,
+    inputPlaceholder:
+      'You need to be over 18 years old for continue',
+    confirmButtonText:
+      'Enter <i class="fa fa-arrow-right"></i>',
+  })
