@@ -42,7 +42,7 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || []
 
 const productos = [];
 const respuesta = async ()=>{
-    const response = await fetch ("js/data.json");
+    const response = await fetch ("Pages/js/data.json");
     const data = await response.json();
     data.forEach(element=>{
         productos.push(element);
@@ -59,7 +59,7 @@ function crearCards(arrayConProductos){
         containerDiv.innerHTML += `<div style="padding: 20px; background-color:white; border: 2px solid black;">
         <h4>${nombre}</h4>
         <p>$${precio}</p>
-        <img src="../../Images/${img}" alt="">
+        <img src="Images/${img}" alt="">
         <button class="btnCarrito" id="btn-agregar${id}">Agregar</button>
         </div>`
     })
