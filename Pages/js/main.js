@@ -42,7 +42,7 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || []
 
 const productos = [];
 const respuesta = async ()=>{
-    const response = await fetch ("/Pages/js/data.json");
+    const response = await fetch ("./data.json");
     const data = await response.json();
     data.forEach(element=>{
         productos.push(element);
