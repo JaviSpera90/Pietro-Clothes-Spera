@@ -93,7 +93,8 @@ function crearCarritoCard(){
             </div>`
     })
     totalCarritoDiv.innerHTML = '';
-    let totalCarrito = carrito.reduce((acc, el) => acc + el.precio * el.cantidad,0)
+    let totalCarrito;
+    totalCarrito = carrito.reduce((acc, el) => acc + el.precio * el.cantidad,0)
     totalCarritoDiv.innerHTML += `
     <p>El total de su compra es $${totalCarrito}</p>
     `
@@ -116,15 +117,6 @@ function borrarProducto(){
     })
 }
 
-//   const { value: accept } = Swal.fire({
-//     title: 'WELCOME TO PIETRO CLOTHES',
-//     input: 'checkbox',
-//     inputValue: 1,
-//     inputPlaceholder:
-//       'You need to be over 18 years old for continue',
-//     confirmButtonText:
-//       'Enter <i class="fa fa-arrow-right"></i>',
-//   })
 function fin(){
     finalizar.addEventListener("click",()=>{
         
@@ -145,7 +137,7 @@ function fin(){
 }
 
 fin();
-let totalCarrito;
+
 let pagar;
 let totalPagar;
 let valorCuota;
