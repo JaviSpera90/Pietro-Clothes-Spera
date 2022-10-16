@@ -135,7 +135,7 @@ function fin(){
 }
 
 fin();
-
+let totalCarrito;
 let pagar;
 let totalPagar;
 let valorCuota;
@@ -149,7 +149,7 @@ const seleccionPago = () => {
     if (pagar === 'debito' || pagar === 'transferencia') {
         divCuota.classList.add('oculta')
         finalizar.classList.remove('oculta')
-        totalPagar = totalCarritoDiv * 0.85;
+        totalPagar = totalCarrito * 0.85;
         //mensaje libreria pago realizado con exito
         Swal.fire({
             position: 'center',
@@ -163,7 +163,7 @@ const seleccionPago = () => {
         tipoDePago.innerText=`Usted eligió la forma de pago ${pagar} con un descuento del 15%, su compra total es de $ ${totalPagar} Final`;
     } else {
         divCuota.classList.remove('oculta')
-        totalPagar = totalCarritoDiv;
+        totalPagar = totalCarrito;
         //evento change para elegir cuotas
         cuotas.addEventListener('change', () => {
             valorCuota = cuotas.value.toLowerCase();
