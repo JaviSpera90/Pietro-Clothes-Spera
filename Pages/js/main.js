@@ -79,7 +79,7 @@ function agregarAlCarrito(producto){
 
 crearCarritoCard();
 }
-
+let totalCarrito;
 function crearCarritoCard(){
     carritoDiv.innerHTML = ""
     carrito.forEach((prod)=>{
@@ -92,15 +92,13 @@ function crearCarritoCard(){
             <button class="btnCarrito" id="btn-borrar${prod.id}">Borrar</button>
             </div>`
     })
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+    borrarProducto()
     totalCarritoDiv.innerHTML = '';
-    let totalCarrito;
     totalCarrito = carrito.reduce((acc, el) => acc + el.precio * el.cantidad,0)
     totalCarritoDiv.innerHTML += `
     <p>El total de su compra es $${totalCarrito}</p>
     `
-    console.log(totalCarrito);
-
-    borrarProducto()
 }
 
 function borrarProducto(){
@@ -135,7 +133,7 @@ function fin(){
 }
 
 fin();
-let totalCarrito;
+
 let pagar;
 let totalPagar;
 let valorCuota;
