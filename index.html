@@ -33,6 +33,33 @@
     <div class="container" style="display: flex; align-items: center; justify-content: center;"></div>
     <div class="carrito" style="display: flex; flex-wrap: wrap; gap:10px;"></div>
     <div class="totalCarrito"></div>
+    <div class="centrado">
+        <h3 class="total titulos tituloCursiva dark tit tit4"></h3>
+        <div class="cardPago" id="cardDia">
+        <form action="" class="pago">
+            <div class="form-pago">
+                <label class="labelPago" for="pago">Forma de pago</label>
+                <select name="pago" id="formaPago"><option value="forma">Elija como pagar</option>
+                    <option value="debito">Débito</option>
+                    <option value="transferencia">Transferencia</option>
+                    <option value="credito">Crédito</option></select>
+                    <span id="pagoSeleccionado"></span>
+                </div></form>
+                <form class="form-cuota" action="">
+                    <div class="divCuotas">
+                        <label class="labelCuotas" for="cuotas">Cantidad Cuotas</label>
+                        <select name="cuotas" id="cuotas">
+                            <option value="elijaCuota">Elija sus cuotas</option>
+                            <option value="una">1 Sin interés</option>
+                            <option value="tres">3 con 25% de interés</option>
+                            <option value="seis">6 con 40% de interés</option>
+                        </select>
+                    </div>
+                </form>
+                <p class="tipoDePago"></p>
+        <button id="finalizar" class="btnAgregar oculta">FINALIZAR COMPRA</button>
+        <button id="cancelar" class="btnBorrar">CANCELAR COMPRA</button>
+        </div>
     <footer class="footer">
         <section class="footer_father">
             <div>
@@ -55,7 +82,7 @@
             <h3>© 2022 Javier Spera, LLC All Rights Reserved</h3>
         </div>
     </footer>
-
+    
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./Pages/js/main.js"></script>
 </body>

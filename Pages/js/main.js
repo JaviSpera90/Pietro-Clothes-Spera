@@ -7,13 +7,6 @@ function producto (nombre, precio) {
     }
 }
 
-// const producto1 = new producto ("Jogger", 6500)
-// const producto2 = new producto ("Hoodie", 7500)
-// const producto3 = new producto ("Zapatillas", 15000)
-// const producto4 = new producto ("Gorra", 4000)
-// const producto5 = new producto ("Remera", 4500)
-// const producto6 = new producto ("Campera", 20000)
-
 let total = 0;
 const Carrito = []
 let comprar = true;
@@ -21,23 +14,22 @@ let comprar = true;
 producto();
 
 producto= [];
-// producto.push(producto1,producto2,producto3,producto4,producto5,producto6)
 
-// const productos= [
-//     { id: 1, nombre: "Hoodie", precio: 7500, img: "hoodie.jpg" },
-//     { id: 2, nombre: "Zapatillas", precio: 15000, img: "zapatillas.jpg" },
-//     { id: 3, nombre: "Remera", precio: 4500, img: "remera.jpg" },
-//     { id: 4, nombre: "Campera", precio: 20000, img: "campera.jpg" },
-//     { id: 5, nombre: "Gorra", precio: 4000, img: "gorra.jpg" },
-//     { id: 6, nombre: "Jogger", precio: 6500, img: "jogger.jpg" },
-// ];
-
-// console.log(productos);
 document.title = "Pietro Clothes";
 
 const containerDiv = document.querySelector(".container");
 const carritoDiv = document.querySelector(".carrito");
 const totalCarritoDiv = document.querySelector(".totalCarrito");
+const btnBorrar = document.getElementById("btnBorrar")
+const checkbox = document.getElementById("checkbox");
+const precioTotal = document.querySelector(".total");
+const finalizar = document.getElementById("finalizar");
+const cancelar = document.getElementById("cancelar");
+const cuotas = document.querySelector('#cuotas');
+const formaPago = document.querySelector('#formaPago');
+const formCuota = document.querySelector('.form-cuota');
+const divCuota = document.querySelector('.divCuotas');
+const tipoDePago = document.querySelector('.tipoDePago');
 let carrito = JSON.parse(localStorage.getItem('carrito')) || []
 
 const productos = [];
@@ -53,7 +45,6 @@ respuesta();
 
 
 function crearCards(arrayConProductos){
-    // containerDiv.innerHTML = "";
     arrayConProductos.forEach(element=>{
         let {nombre, precio, img, id} = element
         containerDiv.innerHTML += `<div style="padding: 20px; background-color:white; border: 2px solid black;">
@@ -84,7 +75,7 @@ function agregarAlCarrito(producto){
     } else{
         let prodFind = carrito.find((prod)=> prod.id===producto.id);
         prodFind.cantidad++
-    }
+    } 
 
 crearCarritoCard();
 }
@@ -125,14 +116,133 @@ function borrarProducto(){
     })
 }
 
-crearCarritoCard();
+//   const { value: accept } = Swal.fire({
+//     title: 'WELCOME TO PIETRO CLOTHES',
+//     input: 'checkbox',
+//     inputValue: 1,
+//     inputPlaceholder:
+//       'You need to be over 18 years old for continue',
+//     confirmButtonText:
+//       'Enter <i class="fa fa-arrow-right"></i>',
+//   })
+function fin(){
+    finalizar.addEventListener("click",()=>{
+        
+        Swal.fire({
+            icon: 'success',
+            title: 'Compra exitosa!!!',
+            text: 'Su compra finalizo correctamente, esperamos volver a verlo pronto muchas gracias por su visita 😀',
+        })
 
-  const { value: accept } = Swal.fire({
-    title: 'WELCOME TO PIETRO CLOTHES',
-    input: 'checkbox',
-    inputValue: 1,
-    inputPlaceholder:
-      'You need to be over 18 years old for continue',
-    confirmButtonText:
-      'Enter <i class="fa fa-arrow-right"></i>',
-  })
+        localStorage.removeItem("carrito");
+        for (let index = 0; index < carrito.length; index++) {
+            carrito.splice(index,carrito.length);;
+        }
+        console.log("fin");
+        console.log(carrito);
+        crearCarritoCard();
+    })
+}
+
+fin();
+let totalCarrito;
+let pagar;
+let totalPagar;
+let valorCuota;
+formaPago.addEventListener('change', () => {
+    pagar = formaPago.value.toLowerCase()
+    seleccionPago();
+});
+
+//funcion para seleccionar forma de pago
+const seleccionPago = () => {
+    if (pagar === 'debito' || pagar === 'transferencia') {
+        divCuota.classList.add('oculta')
+        finalizar.classList.remove('oculta')
+        totalPagar = totalCarrito * 0.85;
+        //mensaje libreria pago realizado con exito
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Realizó su pago con exito',
+            color: 'rgb(156, 19, 138)',
+            text: `Usted eligió la forma de pago ${pagar} con un descuento del 15%, su compra total es de $ ${totalPagar} Final`,
+            showConfirmButton: false,
+            timer: 4500
+        })
+        tipoDePago.innerText=`Usted eligió la forma de pago ${pagar} con un descuento del 15%, su compra total es de $ ${totalPagar} Final`;
+    } else {
+        divCuota.classList.remove('oculta')
+        totalPagar = totalCarrito;
+        //evento change para elegir cuotas
+        cuotas.addEventListener('change', () => {
+            valorCuota = cuotas.value.toLowerCase();
+            console.log(valorCuota);
+            seleccionCuotas();
+            //mensaje libreria pago realizado con exito
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                color: 'rgb(156, 19, 138)',
+                text: `Usted eligió la forma de pago ${pagar} en cantidad de cuotas, ${valorCuota}, monto de cuota a pagar ${parseInt(totalCuota)} Final`,
+                showConfirmButton: false,
+                timer: 5500
+            })
+            tipoDePago.innerText=`Usted eligió la forma de pago ${pagar} en cantidad de cuotas, ${valorCuota} , monto de cuota a pagar $ ${parseInt(totalCuota)} Final`;
+        })
+    }
+}
+
+//funcion para seleccionar cuotas
+const seleccionCuotas = () => {
+    if (valorCuota === 'una') {
+        totalCuota = totalPagar / 1;
+    } else if (valorCuota === 'tres') {
+        totalCuota = (totalPagar * 1.25) / 3;
+    } else {
+        totalCuota = (totalPagar * 1.40) / 6;
+    }
+}
+//cancelar
+function cancel(){
+    cancelar.addEventListener("click",()=>{
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title: 'Estas seguro que quieres cancelar tu compra?',
+            text: "No podrás recuperar tu carrito",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si, borrar!',
+            cancelButtonText: 'No, cancelar!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire(
+                'BORRADO!',
+                'Su carrito fue vaciado.',
+                'success'
+            )
+            localStorage.removeItem("carrito");
+            for (let index = 0; index < carrito.length; index++) {
+            carrito.splice(index,carrito.length);;
+            }
+            console.log(carrito);
+            crearCarritoCard();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire(
+                'CANCELADO',
+                'Puede continuar su compra 🛒',
+                'error'
+                )
+            }
+        })
+    })
+}
+crearCarritoCard();
+cancel();
