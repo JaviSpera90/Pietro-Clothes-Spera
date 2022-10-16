@@ -99,8 +99,6 @@ function crearCarritoCard(){
     <p>El total de su compra es $${totalCarrito}</p>
     `
     console.log(totalCarrito);
-    localStorage.setItem('carrito', JSON.stringify(carrito))
-    localStorage.setItem('total', JSON.stringify(total))
 
     borrarProducto()
 }
