@@ -113,27 +113,6 @@ function borrarProducto(){
     })
 }
 
-function fin(){
-    finalizar.addEventListener("click",()=>{
-        
-        Swal.fire({
-            icon: 'success',
-            title: 'Compra exitosa!!!',
-            text: 'Su compra finalizo correctamente, esperamos volver a verlo pronto muchas gracias por su visita 😀',
-        })
-
-        localStorage.removeItem("carrito");
-        for (let index = 0; index < carrito.length; index++) {
-            carrito.splice(index,carrito.length);;
-        }
-        console.log("fin");
-        console.log(carrito);
-        crearCarritoCard();
-    })
-}
-
-fin();
-
 let pagar;
 let totalPagar;
 let valorCuota;
@@ -148,16 +127,6 @@ const seleccionPago = () => {
         divCuota.classList.add('oculta')
         finalizar.classList.remove('oculta')
         totalPagar = totalCarrito * 0.85;
-        //mensaje libreria pago realizado con exito
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Realizó su pago con exito',
-            color: 'rgb(156, 19, 138)',
-            text: `Usted eligió la forma de pago ${pagar} con un descuento del 15%, su compra total es de $ ${totalPagar} Final`,
-            showConfirmButton: false,
-            timer: 4500
-        })
         tipoDePago.innerText=`Usted eligió la forma de pago ${pagar} con un descuento del 15%, su compra total es de $ ${totalPagar} Final`;
     } else {
         divCuota.classList.remove('oculta')
@@ -234,3 +203,24 @@ function cancel(){
 }
 crearCarritoCard();
 cancel();
+
+function fin(){
+    finalizar.addEventListener("click",()=>{
+        
+        Swal.fire({
+            icon: 'success',
+            title: 'Compra exitosa!!!',
+            text: 'Su compra finalizo correctamente, esperamos volver a verlo pronto muchas gracias por su visita 😀',
+        })
+
+        localStorage.removeItem("carrito");
+        for (let index = 0; index < carrito.length; index++) {
+            carrito.splice(index,carrito.length);;
+        }
+        console.log("fin");
+        console.log(carrito);
+        crearCarritoCard();
+    })
+}
+
+fin();
